@@ -41,6 +41,7 @@ int main()
 	string mathfunction;
 	string mfword;
 	string historyornot;
+	string endinput;
 	char ccalcagain;
 	bool functionvalidator = false;
 	bool exponent = false;
@@ -259,11 +260,11 @@ int main()
 	} while (calcagain == true);
 	
 	//new line and instructions to close
-	cout << "\nThank you for using this program. To close, hit any key. \n";
+	cout << "\nThank you for using this program. To close, type anything and hit enter. \n";
 	
 	
-	//wait for the user to continue
-	system("pause");
+	//wait for the user to input something
+	cin >> endinput;
 	
 	//exit the program
 	return 0;
