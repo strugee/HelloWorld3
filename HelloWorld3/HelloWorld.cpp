@@ -9,10 +9,8 @@
  3. Implement trig functions§
  */
 
-//#include <dos.h>
 #include <iostream>
 #include <string>
-//#include <Windows.h>
 #include <cstdlib>
 #include <stdio.h>
 #include <math.h>
