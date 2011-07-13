@@ -6,7 +6,7 @@
  TODO:
  1. Implement a number validator for inputs
  2. Implement logarithm function
- 3. Implement trig functions§
+ 3. Implement trig functions
  */
 
 #include <iostream>
@@ -78,7 +78,7 @@ int main()
 		//function procedure - the loop makes sure the function is valid, and, if not, try again
 		do {
 			//ask for the function
-			cout << "Type a math function. You can type +, -, *, /, square, cube, exponent, sqrt, cbrt, root, or factorial (!). You can also type the three basic trigonometric functions: sine (sin), cosine (cos), and tangent (tan). Functions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial. \n";
+			cout << "Type a math function. You can type +, -, *, /, square, cube, exponent, sqrt, cbrt, root, or factorial (!). Functions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial. \n";
 			//get the function
 			cin >> mathfunction;
 			//check to make sure mathfunction is valid
@@ -197,18 +197,6 @@ int main()
 		}
 		if (mathfunction == "log" || mathfunction == "logarithm") {
 			//Abandon?
-		}
-		if (mathfunction == "sin" || mathfunction == "sine") {
-			numbers[2] = sin(numbers[0]);
-			mfword = mathfunction;
-		}
-		if (mathfunction == "cos" || mathfunction == "cosine") {
-			numbers[2] = cos(numbers[0]);
-			mfword = mathfunction;
-		}
-		if (mathfunction == "tan" || mathfunction == "tangent") {
-			numbers[2] = tan(numbers[0]);
-			mfword = mathfunction;
 		}
 		if (mathfunction == "!" || mathfunction == "factorial") {
 			if (numbers[0] != 0) {
