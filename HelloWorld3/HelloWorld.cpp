@@ -60,7 +60,7 @@ int main()
 	
 	//print functions
 	cout << "Hello World!\n";
-	cout << "I'm a C++ program! ";
+	cout << "I'm a C++ program! Testing branches... ";
 	
 	/*
 	 //get the input and assign it to the historyornot variable
