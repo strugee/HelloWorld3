@@ -649,8 +649,8 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>PrimaryDocumentTimestamp</string>
 		<string>{0, 0}</string>
-		<string>{0, 1704}</string>
-		<real>332207732.496014</real>
+		<string>{4493, 1697}</string>
+		<real>332208207.96705598</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -826,9 +826,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>332207769.15083802</real>
-		<string>{485, 1625}</string>
-		<string>{1286, 5}</string>
+		<real>332208236.62243599</real>
+		<string>{836, 2158}</string>
+		<string>{1402, 0}</string>
 		<integer>0</integer>
 		<dict>
 			<key>$class</key>
@@ -2802,9 +2802,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>332207769.15272999</real>
-		<string>{485, 1625}</string>
-		<string>{1286, 5}</string>
+		<real>332208236.62433398</real>
+		<string>{836, 2158}</string>
+		<string>{1402, 0}</string>
 		<string>main()</string>
 		<dict>
 			<key>$class</key>
