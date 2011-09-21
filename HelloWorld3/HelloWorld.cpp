@@ -48,7 +48,7 @@ int main()
 	bool inputonevalidator = true;
 	bool inputtwovalidator = true;
 	bool calcagain = false;
-	
+
 	/*		//"initialize" and display title
 	 cout << "Initializing... \n";
 	 Sleep(2000);

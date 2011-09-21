@@ -6,7 +6,10 @@
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/alex/Development/github/HelloWorld3/HelloWorld3/HelloWorld.cpp" line="51" />
+      <Breakpoint file="/Users/alex/Development/github/HelloWorld3/HelloWorld3/HelloWorld.cpp" line="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
