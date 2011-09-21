@@ -1,0 +1,33 @@
+== Calculator app ==
+
+=== Naming ===
+We need a (good) name for the program! If you have any ideas, open an issue.
+
+=== Features ===
+As of 9/20/11, the application supports the following features:
+# Math features
+## Addition
+## Subtraction
+## Multiplication
+## Division
+## Exponents
+### Shortcuts for squares
+### Shortcuts for cubes
+## Roots
+### Shortcuts for square roots
+### Shortcuts for cube roots
+## Factorials
+# General features
+## Says hi
+## Intelligent
+### Won't let you divide by 0
+### Won't let you root a number that would return a value with ''i'' (since this does Bad Things to the program)
+### Won't let you factorial a number too high (since that would give an incorrect answer)
+### Recognizes squares, cubes, square roots and cube roots even if you use the exponent, root, or multiplication functions
+## Once done, calculator will ask if you want to use again
+
+=== Development ===
+You're welcome to develop this program at https://github.com/strugee/HelloWorld3 - just hit fork.
+
+==== Todo ====
+Todos are listed at the top of HelloWorld.cpp in a comment block. They'll be put here soon.
