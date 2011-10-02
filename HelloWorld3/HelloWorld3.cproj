@@ -31,4 +31,9 @@
   <ItemGroup>
     <Compile Include="HelloWorld.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.mediawiki">
+      <Link>README.mediawiki</Link>
+    </None>
+  </ItemGroup>
 </Project>
