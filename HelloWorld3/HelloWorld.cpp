@@ -154,6 +154,9 @@ int main()
 			for (int i=numbers[1];i>0;i--) {
 				numbers[2]*=numbers[0];
 			}
+			if (numbers[1]==0) {
+				mfword = "th power"
+			}
 			if (numbers[1]==1) {
 				mfword = "st power";
 			}
