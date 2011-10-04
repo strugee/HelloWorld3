@@ -4,9 +4,8 @@
 
 /*
  TODO:
- 1. Implement a number validator for inputs
- 2. Implement logarithm function
- 3. Implement trig functions
+ 1. Implement logarithm function
+ 2. Implement trig functions
  */
 
 #include <iostream>
@@ -31,6 +30,61 @@ using namespace std;
  main1();
  return 0;
  }*/
+ 
+ double convertToInt(string input)
+{
+    bool isCompatible = true;
+    int countChars = 0;
+    int size = input.size();
+    for(; size > countChars && isCompatible == true; countChars++)
+    {
+        if( (input[countChars] < 48 || input[countChars] > 57) && input[countChars] != '.')
+        {
+            isCompatible = false;
+        }
+    }
+
+    double out = 0;
+    int decimalPlaced = 0;
+    if(isCompatible)
+    {
+        for(int i = 0; i < countChars; i++)
+        {
+            if(input[i] == 46)
+            {
+                decimalPlaced = 1;
+            }
+            else {
+                if(decimalPlaced > 0) {
+                    int x = 1;
+                    for (int e=decimalPlaced;e>0;e--) {
+                        x *= 10;
+                    }
+                    //my test code
+                    double a = input[i]-48;
+                    double b = a / x;
+                    double c = out + b;
+                    out = c;
+                    //    real code: out = out + ( (input[i] - 48) / x );
+                    //end test code
+                    decimalPlaced++;
+                }
+                else
+                {
+                    out = ( out * 10 ) + (input[i]-48) ;
+                }
+            }
+        }
+    }
+
+    if(isCompatible)
+    {
+        return out;
+    }
+    else {
+        return -1;
+    }
+}
 
 int main()
 {
@@ -45,8 +99,8 @@ int main()
 	bool exponentsquare = false;
 	bool exponentcube = false;
 	bool root = false;
-	bool inputonevalidator = true;
-	bool inputtwovalidator = true;
+	bool inputonevalid = false;
+	bool inputtwovalid = false;
 	bool calcagain = false;
 
 	/*		//"initialize" and display title
@@ -68,12 +122,21 @@ int main()
 	
 	do {
 		
-		//get the first number as long as it's a value a double variable can handle
+		//get the first number and check to make sure a long double variable can handle it
 		do {
 			cout << "Type a number.\n";
-			cin >> numbers[0];
-			//			if () {inputonevalidator = true;}
-		} while (inputonevalidator == false);
+  			string myInput;
+  			cin >> myInput;
+  		 	double numToCheck = convertToInt(myInput);
+			if(numToCheck == -1) {
+				cout << "Input is invalid.\n";
+				inputonevalid = false;
+			} else {
+				cout << "Input is valid. Continuing.\n";
+				numbers[0] = numToCheck;
+				inputonevalid = true;
+    		}
+		} while (inputonevalid == false);
 		
 		//function procedure - the loop makes sure the function is valid, and, if not, try again
 		do {
@@ -90,15 +153,23 @@ int main()
 		//get the second number (and check to make sure it's valid) unless the function only needed one number
 		if (mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "cbrt" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
 			//do nothing here
-			
 		} else {
 			do {
 				//tell user to type second number
 				cout << "Type a second number. \n";
-				//get the second number
-				cin >> numbers[1];
-				//					if () {inputtwovalidator = true;}
-			} while (inputtwovalidator == false);
+	    	    string myInput;
+    		    cin >> myInput;
+    		    double numToCheck = convertToInt(myInput);
+    		    if(numToCheck == -1)
+    		    {
+    		        cout << "Input is invalid.\n";
+    	    	    inputtwovalid = false;
+				} else {
+					cout << "Input is valid. Continuing.\n";
+   	         		numbers[1] = numToCheck;
+					inputtwovalid = true;
+				}
+   	 		} while (inputtwovalid == false);
 		}
 		
 		//if the math function is a square or a cube, set up some stuff for the exponent algorithm
@@ -155,7 +226,7 @@ int main()
 				numbers[2]*=numbers[0];
 			}
 			if (numbers[1]==0) {
-				mfword = "th power"
+				mfword = "th power";
 			}
 			if (numbers[1]==1) {
 				mfword = "st power";
