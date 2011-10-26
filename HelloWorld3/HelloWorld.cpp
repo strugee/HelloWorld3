@@ -4,8 +4,7 @@
 
 /*
  TODO:
- 1. Implement logarithm function
- 2. Implement trig functions
+Todos have been moved to the readme!
  */
 
 #include <iostream>
@@ -14,6 +13,21 @@
 #include <stdio.h>
 #include <math.h>
 using namespace std;
+
+long double numbers[3];
+string mathfunction;
+string mfword;
+string historyornot;
+string endinput;
+char ccalcagain;
+bool functionvalidator = false;
+bool exponent = false;
+bool exponentsquare = false;
+bool exponentcube = false;
+bool root = false;
+bool inputonevalid = false;
+bool inputtwovalid = false;
+bool calcagain = false;
 
 /*int exit() //to call, type exit(1);
  {
@@ -86,22 +100,13 @@ using namespace std;
     }
 }
 
+int calculate()
+{
+	// Eventually, calculations will be moved here and calculate() will be called from main(). The output will be 1 or 0, depending on whether it failed or not.
+}
+	
 int main()
 {
-	long double numbers[3];
-	string mathfunction;
-	string mfword;
-	string historyornot;
-	string endinput;
-	char ccalcagain;
-	bool functionvalidator = false;
-	bool exponent = false;
-	bool exponentsquare = false;
-	bool exponentcube = false;
-	bool root = false;
-	bool inputonevalid = false;
-	bool inputtwovalid = false;
-	bool calcagain = false;
 
 	/*		//"initialize" and display title
 	 cout << "Initializing... \n";
@@ -141,17 +146,17 @@ int main()
 		//function procedure - the loop makes sure the function is valid, and, if not, try again
 		do {
 			//ask for the function
-			cout << "Type a math function. You can type +, -, *, /, square, cube, exponent, sqrt, cbrt, root, or factorial (!). Functions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial. \n";
+			cout << "Type a math function. You can type +, -, *, /, square, cube, exponent, sqrt, cbrt, root, logarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), or factorial (!). Functions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial. \n";
 			//get the function
 			cin >> mathfunction;
 			//check to make sure mathfunction is valid
-			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
+			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "log" || mathfunction == "logarithm" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" /*|| mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent"*/) {
 				functionvalidator = true;
 			}
 		} while (functionvalidator == false);
 		
 		//get the second number (and check to make sure it's valid) unless the function only needed one number
-		if (mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "cbrt" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
+		if (mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "cbrt" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
 			//do nothing here
 		} else {
 			do {
@@ -186,6 +191,12 @@ int main()
 			numbers[1] = 3;
 			mathfunction = "root";
 		}
+		//if the math function is a common logarithm, set up some stuff for the logarithm algorithm
+		if (mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom") {
+			numbers[1] = 10;
+			mathfunction = "log";
+		}
+		
 		
 		//calculations
 		cout << "Calculating... ";
@@ -270,7 +281,8 @@ int main()
 			}
 		}
 		if (mathfunction == "log" || mathfunction == "logarithm") {
-			//Abandon?
+			mfword = "logarithm";
+			numbers[2] = log10(numbers[0]) / log10(numbers[1]);
 		}
 		if (mathfunction == "!" || mathfunction == "factorial") {
 			if (numbers[0] != 0) {
@@ -299,6 +311,13 @@ int main()
 		}
 		if (mfword == "square root" || mfword == "cube root" || mfword == "sin" || mfword == "sine" || mfword == "cos" || mfword == "cosine" || mfword == "tan" || mfword == "tangent" || mfword == "factorial") {
 			cout << "The " << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+		}
+		if (mfword == "logarithm") {
+			if (numbers[1] == 10) {
+				cout << "The common logarithm (base 10) of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+			} else {
+				cout << "With a base of " << numbers[1] << ", the logarithm of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+			}
 		}
 		if (exponent == true) {
 			if (exponentsquare == false && exponentcube == false) {

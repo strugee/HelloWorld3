@@ -16,6 +16,8 @@ As of 9/20/11, the application supports the following features:
 ## Roots
 ### Shortcuts for square roots
 ### Shortcuts for cube roots
+## Logarithms
+### Shortcuts for common logarithms
 ## Factorials
 # General features
 ## Says hi
@@ -23,11 +25,13 @@ As of 9/20/11, the application supports the following features:
 ### Won't let you divide by 0
 ### Won't let you root a number that would return a value with ''i'' (since this does Bad Things to the program)
 ### Won't let you factorial a number too high (since that would give an incorrect answer)
-### Recognizes squares, cubes, square roots and cube roots even if you use the exponent, root, or multiplication functions
+### Recognizes squares, cubes, square roots, cube roots, and common logarithms even if you use the regular exponent, root, multiplication, or logarithm functions
 ## Once done, calculator will ask if you want to use again
 
 === Development ===
 You're welcome to develop this program at https://github.com/strugee/HelloWorld3 - just hit fork.
 
 ==== Todo ====
-Todos are listed at the top of HelloWorld.cpp in a comment block. They'll be put here soon.
+# Implement e (Euler's number = ~2.17)
+## Make everything recognize e
+# Implement trig functions
