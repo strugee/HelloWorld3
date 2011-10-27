@@ -4,7 +4,7 @@
 We need a (good) name for the program! If you have any ideas, open an issue.
 
 === Features ===
-As of 9/20/11, the application supports the following features:
+As of 9/26/11, the application supports the following features:
 # Math features
 ## Addition
 ## Subtraction
@@ -22,16 +22,22 @@ As of 9/20/11, the application supports the following features:
 # General features
 ## Says hi
 ## Intelligent
+## At any prompt, type quit or panic to exit, no questions asked.
 ### Won't let you divide by 0
 ### Won't let you root a number that would return a value with ''i'' (since this does Bad Things to the program)
 ### Won't let you factorial a number too high (since that would give an incorrect answer)
 ### Recognizes squares, cubes, square roots, cube roots, and common logarithms even if you use the regular exponent, root, multiplication, or logarithm functions
 ## Once done, calculator will ask if you want to use again
 
+=== Known Issues ===
+For hardcore known issues, visit https://github.com/strugee/HelloWorld3/issues.
+A general list follows, but this may not be up-to-date or current (it will probably be missing items instead of having fixed ones)
+# Whoa, there's no issues right now.
+
 === Development ===
 You're welcome to develop this program at https://github.com/strugee/HelloWorld3 - just hit fork.
 
 ==== Todo ====
 # Implement e (Euler's number = ~2.17)
-## Make everything recognize e
+## Make everything recognize e (especially log, for ln = natural log = log base e)
 # Implement trig functions

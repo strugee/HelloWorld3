@@ -143,7 +143,7 @@ int main()
 	
 	//print functions
 	cout << "Hello World!\n";
-	cout << "I'm a C++ program! ";
+	cout << "I'm a C++ program!\n";
 	
 	/*
 	 //get the input and assign it to the historyornot variable
@@ -154,11 +154,36 @@ int main()
 	
 	do {
 		
+		//function procedure - the loop makes sure the function is valid, and, if not, try again
+		do {
+			//ask for the function
+			cout << "Type a math function. For help, type \"help\". \n";
+			//get the function
+			cin >> mathfunction;
+			if (mathfunction == "help") {
+				cout << "You can type: \n+, -, *, / \nsquare, cube, exponent, sqrt, cbrt, root, \nlogarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), \nor factorial (!).\nFunctions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial.\n";
+			}
+			//check if user quit
+			if (mathfunction == "quit" || mathfunction == "panic") {
+				cout << "Calculator terminated";
+				return 0;
+			}
+			//check to make sure mathfunction is valid
+			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "log" || mathfunction == "logarithm" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" /*|| mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent"*/) {
+				functionvalidator = true;
+			}
+
+		} while (functionvalidator == false);
+		
 		//get the first number and check to make sure a long double variable can handle it
 		do {
 			cout << "Type a number.\n";
   			string myInput;
   			cin >> myInput;
+  			if (myInput == "quit" || myInput == "panic") {
+	  			cout << "Calculator terminated";
+	  			return 0;
+  			}
   		 	double numToCheck = convertToInt(myInput);
 			if(numToCheck == -1 && myInput != "-1") {
 				cout << "Input is invalid.\n";
@@ -170,18 +195,6 @@ int main()
     		}
 		} while (inputonevalid == false);
 		
-		//function procedure - the loop makes sure the function is valid, and, if not, try again
-		do {
-			//ask for the function
-			cout << "Type a math function. You can type +, -, *, /, square, cube, exponent, sqrt, cbrt, root, logarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), or factorial (!). Functions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial. \n";
-			//get the function
-			cin >> mathfunction;
-			//check to make sure mathfunction is valid
-			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "log" || mathfunction == "logarithm" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" /*|| mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent"*/) {
-				functionvalidator = true;
-			}
-		} while (functionvalidator == false);
-		
 		//get the second number (and check to make sure it's valid) unless the function only needed one number
 		if (mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "cbrt" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
 			//do nothing here
@@ -191,6 +204,10 @@ int main()
 				cout << "Type a second number. \n";
 	    	    string myInput;
     		    cin >> myInput;
+    		    if (myInput == "quit" || myInput == "panic") {
+	    		    cout << "Calculator terminated";
+	    		    return 0;
+    		    }
     		    double numToCheck = convertToInt(myInput);
     		    if(numToCheck == -1 && myInput != "-1")
     		    {
