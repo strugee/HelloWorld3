@@ -22,6 +22,7 @@ As of 9/26/11, the application supports the following features:
 # General features
 ## Says hi
 ## Intelligent
+## Marked as stable on 10/26/11 (woo!)
 ## At any prompt, type quit or panic to exit, no questions asked.
 ### Won't let you divide by 0
 ### Won't let you root a number that would return a value with ''i'' (since this does Bad Things to the program)
