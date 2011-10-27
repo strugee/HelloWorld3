@@ -104,6 +104,33 @@ int calculate()
 {
 	// Eventually, calculations will be moved here and calculate() will be called from main(). The output will be 1 or 0, depending on whether it failed or not.
 }
+
+void printresults()
+{
+		if (mfword == "plus" || mfword == "minus" || mfword == "times" || mfword == "divided by") {
+			cout << "Your first number, " << numbers[0] << ", " << mfword << " your second number, " << numbers[1] << ", is " << numbers[2] << ".";
+		}
+		if (mfword == "square root" || mfword == "cube root" || mfword == "sin" || mfword == "sine" || mfword == "cos" || mfword == "cosine" || mfword == "tan" || mfword == "tangent" || mfword == "factorial") {
+			cout << "The " << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+		}
+		if (mfword == "logarithm") {
+			if (numbers[1] == 10) {
+				cout << "The common logarithm (base 10) of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+			} else {
+				cout << "With a base of " << numbers[1] << ", the logarithm of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+			}
+		}
+		if (exponent == true) {
+			if (exponentsquare == false && exponentcube == false) {
+				cout << "When your number, " << numbers[0] << ", is raised to the " << numbers[1] << mfword << ", it equals " << numbers[2] << ".\n";
+			}
+			if (exponentsquare == true || exponentcube == true)
+				cout << "The " << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".\n";
+		}
+		if (root == true && mfword != "square root" && mfword != "cube root") {
+			cout << "The " << numbers[1] << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".";
+		}
+}
 	
 int main()
 {
@@ -133,7 +160,7 @@ int main()
   			string myInput;
   			cin >> myInput;
   		 	double numToCheck = convertToInt(myInput);
-			if(numToCheck == -1) {
+			if(numToCheck == -1 && myInput != "-1") {
 				cout << "Input is invalid.\n";
 				inputonevalid = false;
 			} else {
@@ -165,7 +192,7 @@ int main()
 	    	    string myInput;
     		    cin >> myInput;
     		    double numToCheck = convertToInt(myInput);
-    		    if(numToCheck == -1)
+    		    if(numToCheck == -1 && myInput != "-1")
     		    {
     		        cout << "Input is invalid.\n";
     	    	    inputtwovalid = false;
@@ -306,29 +333,7 @@ int main()
 		cout << "Done.\n";
 		//end of calculations
 		
-		if (mfword == "plus" || mfword == "minus" || mfword == "times" || mfword == "divided by") {
-			cout << "Your first number, " << numbers[0] << ", " << mfword << " your second number, " << numbers[1] << ", is " << numbers[2] << ".";
-		}
-		if (mfword == "square root" || mfword == "cube root" || mfword == "sin" || mfword == "sine" || mfword == "cos" || mfword == "cosine" || mfword == "tan" || mfword == "tangent" || mfword == "factorial") {
-			cout << "The " << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".";
-		}
-		if (mfword == "logarithm") {
-			if (numbers[1] == 10) {
-				cout << "The common logarithm (base 10) of your number, " << numbers[0] << ", is " << numbers[2] << ".";
-			} else {
-				cout << "With a base of " << numbers[1] << ", the logarithm of your number, " << numbers[0] << ", is " << numbers[2] << ".";
-			}
-		}
-		if (exponent == true) {
-			if (exponentsquare == false && exponentcube == false) {
-				cout << "When your number, " << numbers[0] << ", is raised to the " << numbers[1] << mfword << ", it equals " << numbers[2] << ".\n";
-			}
-			if (exponentsquare == true || exponentcube == true)
-				cout << "The " << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".\n";
-		}
-		if (root == true && mfword != "square root" && mfword != "cube root") {
-			cout << "The " << numbers[1] << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".";
-		}
+		printresults();
 		
 		//ask the user if they want to use again
 		cout << "\nWould you like to use the calculator again? y/n\n";
@@ -343,6 +348,8 @@ int main()
 	
 	//wait for the user to input something
 	cin >> endinput;
+	
+	cout << "Calculator terminated";
 	
 	//exit the program
 	return 0;
