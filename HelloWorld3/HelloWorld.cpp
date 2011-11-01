@@ -165,7 +165,7 @@ int main()
 			}
 			//check if user quit
 			if (mathfunction == "quit" || mathfunction == "panic") {
-				cout << "Calculator terminated";
+				cout << "Calculator terminated\n";
 				return 0;
 			}
 			//check to make sure mathfunction is valid
@@ -181,7 +181,7 @@ int main()
   			string myInput;
   			cin >> myInput;
   			if (myInput == "quit" || myInput == "panic") {
-	  			cout << "Calculator terminated";
+	  			cout << "Calculator terminated\n";
 	  			return 0;
   			}
   		 	double numToCheck = convertToInt(myInput);
@@ -205,7 +205,7 @@ int main()
 	    	    string myInput;
     		    cin >> myInput;
     		    if (myInput == "quit" || myInput == "panic") {
-	    		    cout << "Calculator terminated";
+	    		    cout << "Calculator terminated\n";
 	    		    return 0;
     		    }
     		    double numToCheck = convertToInt(myInput);
@@ -366,7 +366,7 @@ int main()
 	//wait for the user to input something
 	cin >> endinput;
 	
-	cout << "Calculator terminated";
+	cout << "Calculator terminated\n";
 	
 	//exit the program
 	return 0;
