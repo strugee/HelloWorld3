@@ -33,7 +33,7 @@ As of 9/26/11, the application supports the following features:
 === Known Issues ===
 For hardcore known issues, visit https://github.com/strugee/HelloWorld3/issues.
 A general list follows, but this may not be up-to-date or current (it will probably be missing items instead of having fixed ones)
-# Whoa, there's no issues right now.
+# Even though the square root function checks for ''i'', the regular root function doesn't.
 
 === Development ===
 You're welcome to develop this program at https://github.com/strugee/HelloWorld3 - just hit fork.
@@ -42,3 +42,14 @@ You're welcome to develop this program at https://github.com/strugee/HelloWorld3
 # Implement e (Euler's number = ~2.17)
 ## Make everything recognize e (especially log, for ln = natural log = log base e)
 # Implement trig functions
+# Make requests for numbers contextual
+
+==== Fail Values ====
+This is a chart for the FailReason variable, which the calculate() method will set when it fails, along with returning 1. Trust me, you'll need it.
+{| border="1"
+|0||Divided by 0
+|-
+|1||Answer would have been complex (with ''i'', as opposed to real, without ''i'')
+|-
+|2||Factorial is too big
+|}

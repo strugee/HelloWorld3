@@ -14,11 +14,11 @@ Todos have been moved to the readme!
 #include <math.h>
 using namespace std;
 
+int FailReason = 1;
 long double numbers[3];
 string mathfunction;
 string mfword;
 string historyornot;
-string endinput;
 char ccalcagain;
 bool functionvalidator = false;
 bool exponent = false;
@@ -45,7 +45,7 @@ bool calcagain = false;
  return 0;
  }*/
  
- double convertToInt(string input)
+double convertToInt(string input)
 {
     bool isCompatible = true;
     int countChars = 0;
@@ -103,6 +103,142 @@ bool calcagain = false;
 int calculate()
 {
 	// Eventually, calculations will be moved here and calculate() will be called from main(). The output will be 1 or 0, depending on whether it failed or not.
+	
+	// Addition
+	if (mathfunction == "+") {
+		numbers[2] = numbers[0] + numbers[1];
+		mfword = "plus";
+		return 0;
+	}
+	// Subtraction
+	if (mathfunction == "-") {
+		numbers[2] = numbers[0] - numbers[1];
+		mfword = "minus";
+		return 0;
+	}
+	
+	// Multiplication
+	if (mathfunction == "*") {
+		if (numbers[0] == numbers[1]) {
+			mathfunction = "exponent";
+			numbers[1] = 2;
+		} else {
+			numbers[2] = numbers[0] * numbers[1];
+			mfword = "times";
+		}
+		return 0;
+	}
+	
+	// Division
+	if (mathfunction == "/") {
+		// Check if user divided by 0
+		if (numbers[1] == 0) {
+			/*cout << "Done.\n";
+			cout << "Your first number, " << numbers[0] << ", divided by your second number, 0 , is negative infinity and positive infinity.";
+			cout << "\nThank you for using this program. To close, hit any key. \n";
+			system("pause");
+			return 0; */
+			FailReason = 0;
+			return 1;
+		// If they didn't divide by 0, do the calculations
+		} else {
+			numbers[2] = numbers[0] / numbers[1];
+			mfword = "divided by";
+			return 0;
+		}
+	}
+	
+	// Exponents
+	if (mathfunction == "exponent") {
+		exponent = true;
+		numbers[2]=1;
+		// Do the actual calculations
+		for (int i=numbers[1];i>0;i--) {
+			numbers[2]*=numbers[0];
+		}
+		// Set stuff up to be outputted
+		if (numbers[1]==0) {
+			mfword = "th power";
+		}
+		if (numbers[1]==1) {
+			mfword = "st power";
+		}
+		if (numbers[1]==2) {
+			mfword = "square";
+			exponentsquare = true;
+		}
+		if (numbers[1]==3) {
+			mfword = "cube";
+			exponentcube = true;
+		}
+		if (numbers[1]>3) {
+			mfword = "th power";
+		}
+		return 0;
+	}
+	if (mathfunction == "sqrt")	{
+		// Check if user attempted to root a negative number. If not, do the calculations.
+		if (numbers[0]>0) {
+			numbers[2] = sqrt(numbers[0]);
+			mfword = "square root";
+			return 0;
+		// If user *did* attempt to root a negative number, fail and exit
+		} else {
+			FailReason = 1;
+			return 1;
+		}
+	}
+	
+	// Roots
+	if (mathfunction == "root") {
+		root = true;
+		// Calculations
+		numbers[2] = pow(numbers[0], (1.0/numbers[1]));
+		// Stuff for the output
+		if (numbers[1] == 1) {
+			mfword = "1st root";
+		}
+		if (numbers[1] == 2) {
+			mfword = "square root";
+		}
+		if (numbers[1] == 3) {
+			mfword = "cube root";
+		}
+		if (numbers[1] > 3) {
+			mfword = "th root";
+		}
+		return 0;
+	}
+	
+	// Logarithms
+	if (mathfunction == "log" || mathfunction == "logarithm") {
+		mfword = "logarithm";
+		numbers[2] = log10(numbers[0]) / log10(numbers[1]);
+	}
+	
+	// Factorials
+	if (mathfunction == "!" || mathfunction == "factorial") {
+		// See if the number is not 0. If it's not, continue.
+		if (numbers[0] != 0) {
+			// See if number is smaller than 13. If not, calculate the factorial
+			if (numbers[0]<13) {
+				numbers[2]=1;
+				for (int i=1; i<=numbers[0]; i++) {
+					numbers[2] *= i;
+				}
+			// If number *is* bigger than 13, fail and exit
+			} else {
+				FailReason = 2;
+				return 1;
+			}
+			mfword = "factorial";
+		// If the number to factorial *was* 0, set the answer to 1
+		} else {
+			numbers[2] = 1;
+			mfword = "factorial";
+			return 0;
+		}
+	}
 }
 
 void printresults()
@@ -131,7 +267,7 @@ void printresults()
 			cout << "The " << numbers[1] << mfword << " of your number, " << numbers[0] << ", is " << numbers[2] << ".";
 		}
 }
-	
+
 int main()
 {
 
@@ -164,11 +300,12 @@ int main()
 				cout << "You can type: \n+, -, *, / \nsquare, cube, exponent, sqrt, cbrt, root, \nlogarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), \nor factorial (!).\nFunctions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial.\n";
 			}
 			//check if user quit
-			if (mathfunction == "quit" || mathfunction == "panic") {
+			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
 				cout << "Calculator terminated";
-				return 0;
+				return 1;
 			}
 			//check to make sure mathfunction is valid
+			functionvalidator = false;
 			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "log" || mathfunction == "logarithm" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" /*|| mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent"*/) {
 				functionvalidator = true;
 			}
@@ -180,9 +317,10 @@ int main()
 			cout << "Type a number.\n";
   			string myInput;
   			cin >> myInput;
-  			if (myInput == "quit" || myInput == "panic") {
+  			//check if user quit
+  			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	  			cout << "Calculator terminated";
-	  			return 0;
+	  			return 1;
   			}
   		 	double numToCheck = convertToInt(myInput);
 			if(numToCheck == -1 && myInput != "-1") {
@@ -204,9 +342,10 @@ int main()
 				cout << "Type a second number. \n";
 	    	    string myInput;
     		    cin >> myInput;
-    		    if (myInput == "quit" || myInput == "panic") {
+    		    //check if user quit
+    		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	    		    cout << "Calculator terminated";
-	    		    return 0;
+	    		    return 1;
     		    }
     		    double numToCheck = convertToInt(myInput);
     		    if(numToCheck == -1 && myInput != "-1")
@@ -244,116 +383,32 @@ int main()
 		
 		//calculations
 		cout << "Calculating... ";
-		if (mathfunction == "+") {
-			numbers[2] = numbers[0] + numbers[1];
-			mfword = "plus";
+		int calculateexit;
+		calculateexit = calculate();
+		if (calculateexit == 0) {
+			cout << "Done.\n";
+		} else {
+			string FailOutput;
+			if (FailReason == 0) {
+				FailOutput = "user attempted to divide by zero";
+			}
+			if (FailReason == 1) {
+				FailOutput = "complex numbers using i are not supported";
+			}
+			if (FailReason == 2) {
+				FailOutput = "number to factorial is too big";
+			}
+			cout << "Failed.\nInvalid operation: " << FailOutput << ", exiting...\n";
+			cout << "Calculator terminated.";
+			return 1;
 		}
-		if (mathfunction == "-") {
-			numbers[2] = numbers[0] - numbers[1];
-			mfword = "minus";
-		}
-		if (mathfunction == "*") {
-			if (numbers[0] == numbers[1]) {
-				mathfunction = "exponent";
-				numbers[1] = 2;
-			} else {
-				numbers[2] = numbers[0] * numbers[1];
-				mfword = "times";
-			}
-		}
-		if (mathfunction == "/") {
-			if (numbers[1] == 0) {
-				/*cout << "Done.\n";
-				 cout << "Your first number, " << numbers[0] << ", divided by your second number, 0 , is negative infinity and positive infinity.";
-				 cout << "\nThank you for using this program. To close, hit any key. \n";
-				 system("pause");
-				 return 0; */
-				cout << "Failed.\nInvalid operation: user attempted to divide by zero, exiting\n";
-				system("pause");
-				return 0;
-			} else {numbers[2] = numbers[0] / numbers[1];};
-			mfword = "divided by";
-		}
-		if (mathfunction == "exponent") {
-			exponent = true;
-			numbers[2]=1;
-			for (int i=numbers[1];i>0;i--) {
-				numbers[2]*=numbers[0];
-			}
-			if (numbers[1]==0) {
-				mfword = "th power";
-			}
-			if (numbers[1]==1) {
-				mfword = "st power";
-			}
-			if (numbers[1]==2) {
-				mfword = "square";
-				exponentsquare = true;
-			}
-			if (numbers[1]==3) {
-				mfword = "cube";
-				exponentcube = true;
-			}
-			if (numbers[1]>3) {
-				mfword = "th power";
-			}
-		}
-		if (mathfunction == "sqrt")	{
-			if (numbers[0]>0) {
-				numbers[2] = sqrt(numbers[0]);
-				mfword = "square root";
-			} else {
-				cout << "Failed.\nInvalid operation: i is not supported, exiting\n";
-				system("pause");
-				return 0;
-			}
-		}
-		if (mathfunction == "root") {
-			root = true;
-			numbers[2] = pow(numbers[0], (1.0/numbers[1]));
-			if (numbers[1] == 1) {
-				mfword = "1st root";
-			}
-			if (numbers[1] == 2) {
-				mfword = "square root";
-			}
-			if (numbers[1] == 3) {
-				mfword = "cube root";
-			}
-			if (numbers[1] > 3) {
-				mfword = "th root";
-			}
-		}
-		if (mathfunction == "log" || mathfunction == "logarithm") {
-			mfword = "logarithm";
-			numbers[2] = log10(numbers[0]) / log10(numbers[1]);
-		}
-		if (mathfunction == "!" || mathfunction == "factorial") {
-			if (numbers[0] != 0) {
-				if (numbers[0]<13) {
-					numbers[2]=1;
-					for (int i=1; i<=numbers[0]; i++) {
-						numbers[2] *= i;
-					}
-				} else {
-					cout << "Failed.\nInvalid operation: number to factorial is too big, exiting\n";
-					system("pause");
-					return 0;
-				}
-				mfword = "factorial";
-			} else {
-				numbers[2] = 1;
-				mfword = "factorial";
-			}
-		}
-		
-		cout << "Done.\n";
 		//end of calculations
 		
+		// Print the results
 		printresults();
 		
 		//ask the user if they want to use again
-		cout << "\nWould you like to use the calculator again? y/n\n";
+		cout << "\nWould you like to use the calculator again? y/n: ";
 		cin >> ccalcagain;
 		if (ccalcagain == 'y') {calcagain = true;} else {calcagain = false;}
 		
@@ -364,6 +419,7 @@ int main()
 	
 	
 	//wait for the user to input something
+	string endinput;
 	cin >> endinput;
 	
 	cout << "Calculator terminated";
