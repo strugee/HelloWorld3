@@ -300,9 +300,15 @@ int main()
 				cout << "You can type: \n+, -, *, / \nsquare, cube, exponent, sqrt, cbrt, root, \nlogarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), \nor factorial (!).\nFunctions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial.\n";
 			}
 			//check if user quit
+<<<<<<< HEAD
 			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
 				cout << "Calculator terminated";
 				return 1;
+=======
+			if (mathfunction == "quit" || mathfunction == "panic") {
+				cout << "Calculator terminated\n";
+				return 0;
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
 			}
 			//check to make sure mathfunction is valid
 			functionvalidator = false;
@@ -317,10 +323,16 @@ int main()
 			cout << "Type a number.\n";
   			string myInput;
   			cin >> myInput;
+<<<<<<< HEAD
   			//check if user quit
   			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	  			cout << "Calculator terminated";
 	  			return 1;
+=======
+  			if (myInput == "quit" || myInput == "panic") {
+	  			cout << "Calculator terminated\n";
+	  			return 0;
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
   			}
   		 	double numToCheck = convertToInt(myInput);
 			if(numToCheck == -1 && myInput != "-1") {
@@ -342,10 +354,16 @@ int main()
 				cout << "Type a second number. \n";
 	    	    string myInput;
     		    cin >> myInput;
+<<<<<<< HEAD
     		    //check if user quit
     		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	    		    cout << "Calculator terminated";
 	    		    return 1;
+=======
+    		    if (myInput == "quit" || myInput == "panic") {
+	    		    cout << "Calculator terminated\n";
+	    		    return 0;
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
     		    }
     		    double numToCheck = convertToInt(myInput);
     		    if(numToCheck == -1 && myInput != "-1")
@@ -422,7 +440,7 @@ int main()
 	string endinput;
 	cin >> endinput;
 	
-	cout << "Calculator terminated";
+	cout << "Calculator terminated\n";
 	
 	//exit the program
 	return 0;
