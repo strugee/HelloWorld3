@@ -301,10 +301,13 @@ int main()
 			}
 			//check if user quit
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
 				cout << "Calculator terminated";
 				return 1;
 =======
+=======
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
 			if (mathfunction == "quit" || mathfunction == "panic") {
 				cout << "Calculator terminated\n";
 				return 0;
@@ -324,11 +327,14 @@ int main()
   			string myInput;
   			cin >> myInput;
 <<<<<<< HEAD
+<<<<<<< HEAD
   			//check if user quit
   			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	  			cout << "Calculator terminated";
 	  			return 1;
 =======
+=======
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
   			if (myInput == "quit" || myInput == "panic") {
 	  			cout << "Calculator terminated\n";
 	  			return 0;
@@ -355,11 +361,14 @@ int main()
 	    	    string myInput;
     		    cin >> myInput;
 <<<<<<< HEAD
+<<<<<<< HEAD
     		    //check if user quit
     		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	    		    cout << "Calculator terminated";
 	    		    return 1;
 =======
+=======
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
     		    if (myInput == "quit" || myInput == "panic") {
 	    		    cout << "Calculator terminated\n";
 	    		    return 0;
