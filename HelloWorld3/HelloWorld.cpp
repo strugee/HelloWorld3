@@ -302,12 +302,21 @@ int main()
 			//check if user quit
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 920fba7... Code refactoring; bug fixes
 			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
 				cout << "Calculator terminated";
 				return 1;
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
+=======
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
+=======
+>>>>>>> parent of 920fba7... Code refactoring; bug fixes
 			if (mathfunction == "quit" || mathfunction == "panic") {
 				cout << "Calculator terminated\n";
 				return 0;
@@ -328,13 +337,22 @@ int main()
   			cin >> myInput;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 920fba7... Code refactoring; bug fixes
   			//check if user quit
   			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	  			cout << "Calculator terminated";
 	  			return 1;
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
+=======
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
+=======
+>>>>>>> parent of 920fba7... Code refactoring; bug fixes
   			if (myInput == "quit" || myInput == "panic") {
 	  			cout << "Calculator terminated\n";
 	  			return 0;
@@ -362,13 +380,22 @@ int main()
     		    cin >> myInput;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 920fba7... Code refactoring; bug fixes
     		    //check if user quit
     		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
 	    		    cout << "Calculator terminated";
 	    		    return 1;
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
+=======
+>>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
+=======
+>>>>>>> parent of 920fba7... Code refactoring; bug fixes
     		    if (myInput == "quit" || myInput == "panic") {
 	    		    cout << "Calculator terminated\n";
 	    		    return 0;
