@@ -102,7 +102,9 @@ double convertToInt(string input)
 
 int calculate()
 {
-	// Eventually, calculations will be moved here and calculate() will be called from main(). The output will be 1 or 0, depending on whether it failed or not.
+	// calculate() is called from main() now. The output is 1 or 0, depending on whether it failed or not.
+	// In addition to returning 1 when it fails, the calculate() function sets the FailReason variable.
+	// For a chart of what FailReason values mean, see Fail Values under the Development header.
 	
 	// Addition
 	if (mathfunction == "+") {
@@ -300,27 +302,12 @@ int main()
 				cout << "You can type: \n+, -, *, / \nsquare, cube, exponent, sqrt, cbrt, root, \nlogarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), \nor factorial (!).\nFunctions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial.\n";
 			}
 			//check if user quit
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 920fba7... Code refactoring; bug fixes
 			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
-				cout << "Calculator terminated";
+				cout << "Calculator terminated\n";
 				return 1;
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
-=======
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
-=======
->>>>>>> parent of 920fba7... Code refactoring; bug fixes
 			if (mathfunction == "quit" || mathfunction == "panic") {
 				cout << "Calculator terminated\n";
 				return 0;
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
 			}
 			//check to make sure mathfunction is valid
 			functionvalidator = false;
@@ -335,28 +322,13 @@ int main()
 			cout << "Type a number.\n";
   			string myInput;
   			cin >> myInput;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 920fba7... Code refactoring; bug fixes
   			//check if user quit
   			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
-	  			cout << "Calculator terminated";
+	  			cout << "Calculator terminated\n";
 	  			return 1;
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
-=======
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
-=======
->>>>>>> parent of 920fba7... Code refactoring; bug fixes
   			if (myInput == "quit" || myInput == "panic") {
 	  			cout << "Calculator terminated\n";
 	  			return 0;
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
   			}
   		 	double numToCheck = convertToInt(myInput);
 			if(numToCheck == -1 && myInput != "-1") {
@@ -378,28 +350,13 @@ int main()
 				cout << "Type a second number. \n";
 	    	    string myInput;
     		    cin >> myInput;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 920fba7... Code refactoring; bug fixes
     		    //check if user quit
     		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
-	    		    cout << "Calculator terminated";
+	    		    cout << "Calculator terminated\n";
 	    		    return 1;
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
-=======
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
-=======
->>>>>>> parent of 920fba7... Code refactoring; bug fixes
     		    if (myInput == "quit" || myInput == "panic") {
 	    		    cout << "Calculator terminated\n";
 	    		    return 0;
->>>>>>> f3c91ccc785bc8d0e0d0ccf8720489b1eb4e4d96
     		    }
     		    double numToCheck = convertToInt(myInput);
     		    if(numToCheck == -1 && myInput != "-1")
@@ -453,7 +410,7 @@ int main()
 				FailOutput = "number to factorial is too big";
 			}
 			cout << "Failed.\nInvalid operation: " << FailOutput << ", exiting...\n";
-			cout << "Calculator terminated.";
+			cout << "Calculator terminated\n";
 			return 1;
 		}
 		//end of calculations
