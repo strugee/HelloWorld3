@@ -36,5 +36,6 @@
     <None Include="..\README.mediawiki">
       <Link>README.mediawiki</Link>
     </None>
+    <None Include="version.txt" />
   </ItemGroup>
 </Project>

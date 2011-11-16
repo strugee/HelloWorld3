@@ -1,6 +1,6 @@
 //HelloWorld program
 //Written by Alex Jordan
-//v0.6a4
+//v0.7a1
 
 /*
  TODO:
@@ -14,7 +14,8 @@ Todos have been moved to the readme!
 #include <math.h>
 using namespace std;
 
-int FailReason = 1;
+int FailReason;
+bool Failed = false;
 long double numbers[3];
 string mathfunction;
 string mfword;
@@ -38,7 +39,7 @@ bool calcagain = false;
 /*static int history()
  {
  cout << "This program was developed by Alex Jordan on the 20th of June, 2011, at iD Tech Camps using Microsoft Visual C++ 2010 Express./n";
- cout << "You're currently running version 0.6 alpha 3 of this program.";
+ cout << "You're currently running version 0.7 alpha 1 of this program.";
  cout << "/n";
  system("pause");
  main1();
@@ -100,11 +101,195 @@ double convertToInt(string input)
     }
 }
 
+void GetMathFunction()
+{
+		//function procedure - the loop makes sure the function is valid, and, if not, try again
+		do {
+			//ask for the function
+			cout << "Type a math function. For help, type \"help\". \n";
+			//get the function
+			cin >> mathfunction;
+			if (mathfunction == "help") {
+				cout << "You can type: \n+, -, *, / \nsquare, cube, exponent, sqrt, cbrt, root, \nlogarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), \nor factorial (!).\nFunctions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial.\n";
+			}
+			//check if user quit
+			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
+				cout << "Calculator terminated\n";
+				exit(1);
+			}
+			//check to make sure mathfunction is valid
+			functionvalidator = false;
+			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "log" || mathfunction == "logarithm" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" /*|| mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent"*/) {
+				functionvalidator = true;
+			}
+		} while (functionvalidator == false);
+}
+
+void GetFirstNumber()
+{
+		//get the first number and check to make sure a long double variable can handle it
+		do {
+			bool AskedNumber = false;
+			if (mathfunction == "+") {
+				cout << "Type the first number to add.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "-") {
+				cout << "Type the number to subtract from.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "*") {
+				cout << "Type the first number to multiply.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "/") {
+				cout << "Type the number to divide.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "exponent") {
+				cout << "Type the base of the exponent.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "square") {
+				cout << "Type the number to square.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "cube") {
+				cout << "Type the number to cube.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "sqrt") {
+				cout << "Type the number to square root.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "cbrt") {
+				cout << "Type the number to cube root.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "root") {
+				cout << "Type the number to root.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "log" && numbers[1] != 10) {
+				cout << "Type the number inside the logarithm.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "log" && numbers[1] == 10) {
+				cout << "Type the number inside the logarithm. The base will be 10.\n";
+				AskedNumber = true;
+			}
+			if (mathfunction == "!") {
+				cout << "Type the number to factorial.\n";
+				AskedNumber = true;
+			}
+			//fallback question - if the question hasn't been asked yet, fall back to the default, non-contextual question
+			if (AskedNumber == false) {
+				cout << "Type a number.\n";
+			}
+  			string myInput;
+  			cin >> myInput;
+  			//check if user quit
+  			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
+	  			cout << "Calculator terminated\n";
+	  			exit(1);
+  			}
+  		 	double numToCheck = convertToInt(myInput);
+			if(numToCheck == -1 && myInput != "-1") {
+				cout << "Input is invalid.\n";
+				inputonevalid = false;
+			} else {
+				cout << "Input is valid. Continuing.\n";
+				numbers[0] = numToCheck;
+				inputonevalid = true;
+    		}
+		} while (inputonevalid == false);
+}
+
+void GetSecondNumber() {
+		//get the second number (and check to make sure it's valid) unless the function only needed one number
+		if (mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "cbrt" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
+			if (mathfunction == "square") {
+				cout << "Since you said to square the number, we don't need a second number.\n";
+			}
+			if (mathfunction == "cube") {
+				cout << "Since you said to cube the number, we don't need a second number.\n";
+			}
+			if (mathfunction == "sqrt") {
+				cout << "The square root function only needs one number.\n";
+			}
+			if (mathfunction == "cbrt") {
+				cout << "The cube root function only needs one number.\n";
+			}
+			if (mathfunction == "log" && numbers[1] == 10) {
+				cout << "Since you specified the common logaithm, a second number is not needed.\n";
+			}
+			if (mathfunction == "!") {
+				cout << "Since you said to factorial, we don't need a second number.\n";
+			}
+		} else {
+			do {
+				//tell user to type second number
+				bool AskedNumber = false;
+				if (mathfunction == "+") {
+					cout << "Type the number to be added to your first number.\n";
+					AskedNumber = true;
+				}
+				if (mathfunction == "-") {
+					cout << "Type the number to subtract.\n";
+					AskedNumber = true;
+				}
+				if (mathfunction == "*") {
+					cout << "Type the second number to multiply.\n";
+					AskedNumber = true;
+				}
+				if (mathfunction == "/") {
+					cout << "Type the number to divide by.\n";
+					AskedNumber = true;
+				}
+				if (mathfunction == "exponent") {
+					cout << "Type the coefficient of the exponent.\n";
+					AskedNumber == true;
+				}
+				if (mathfunction == "root") {
+					cout << "Type the number to root by.\n";
+					AskedNumber = true;
+				}
+				if (mathfunction == "log" && numbers[1] != 10) {
+					cout << "Type the base of the logarithm.\n";
+					AskedNumber = true;
+				}
+				//fallback question - if question hasn't been asked yet, fall back to the default, non-contextual question
+				if (AskedNumber = false) {
+					cout << "Type a second number.\n";
+				}
+	    	    string myInput;
+    		    cin >> myInput;
+    		    //check if user quit
+    		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
+	    		    cout << "Calculator terminated\n";
+	    		    exit(1);
+    		    }
+    		    double numToCheck = convertToInt(myInput);
+    		    if(numToCheck == -1 && myInput != "-1")
+    		    {
+    		        cout << "Input is invalid.\n";
+    	    	    inputtwovalid = false;
+				} else {
+					cout << "Input is valid. Continuing.\n";
+   	         		numbers[1] = numToCheck;
+					inputtwovalid = true;
+				}
+   	 		} while (inputtwovalid == false);
+		}
+}
+
 int calculate()
 {
 	// calculate() is called from main() now. The output is 1 or 0, depending on whether it failed or not.
 	// In addition to returning 1 when it fails, the calculate() function sets the FailReason variable.
-	// For a chart of what FailReason values mean, see Fail Values under the Development header.
+	// For a chart of what FailReason values mean, see Fail Values under the Development header in the readme.
+	
+	// When you add to this, MAKE SURE to add a contextual question for your function in GetFirstNumber() and GetSecondNumber()
 	
 	// Addition
 	if (mathfunction == "+") {
@@ -141,6 +326,7 @@ int calculate()
 			system("pause");
 			return 0; */
 			FailReason = 0;
+			Failed = true;
 			return 1;
 		// If they didn't divide by 0, do the calculations
 		} else {
@@ -187,6 +373,7 @@ int calculate()
 		// If user *did* attempt to root a negative number, fail and exit
 		} else {
 			FailReason = 1;
+			Failed = true;
 			return 1;
 		}
 	}
@@ -231,9 +418,11 @@ int calculate()
 			// If number *is* bigger than 13, fail and exit
 			} else {
 				FailReason = 2;
+				Failed = true;
 				return 1;
 			}
 			mfword = "factorial";
+			return 0;
 		// If the number to factorial *was* 0, set the answer to 1
 		} else {
 			numbers[2] = 1;
@@ -292,84 +481,17 @@ int main()
 	
 	do {
 		
-		//function procedure - the loop makes sure the function is valid, and, if not, try again
-		do {
-			//ask for the function
-			cout << "Type a math function. For help, type \"help\". \n";
-			//get the function
-			cin >> mathfunction;
-			if (mathfunction == "help") {
-				cout << "You can type: \n+, -, *, / \nsquare, cube, exponent, sqrt, cbrt, root, \nlogarithm (log), logarithm10 (log10, comlogarithm, comlog, other variants), \nor factorial (!).\nFunctions in parentheses can be used in place of their preceding functions. For example, ! can be used instead of factorial.\n";
-			}
-			//check if user quit
-			if (mathfunction == "quit" || mathfunction == "panic" || mathfunction == "exit") {
-				cout << "Calculator terminated\n";
-				return 1;
-			if (mathfunction == "quit" || mathfunction == "panic") {
-				cout << "Calculator terminated\n";
-				return 0;
-			}
-			//check to make sure mathfunction is valid
-			functionvalidator = false;
-			if (mathfunction == "+" || mathfunction == "-" || mathfunction == "*" || mathfunction == "/" || mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "exponent" || mathfunction == "cbrt" || mathfunction == "root" || mathfunction == "log" || mathfunction == "logarithm" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" /*|| mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent"*/) {
-				functionvalidator = true;
-			}
+		GetMathFunction();
 
-		} while (functionvalidator == false);
-		
-		//get the first number and check to make sure a long double variable can handle it
-		do {
-			cout << "Type a number.\n";
-  			string myInput;
-  			cin >> myInput;
-  			//check if user quit
-  			if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
-	  			cout << "Calculator terminated\n";
-	  			return 1;
-  			if (myInput == "quit" || myInput == "panic") {
-	  			cout << "Calculator terminated\n";
-	  			return 0;
-  			}
-  		 	double numToCheck = convertToInt(myInput);
-			if(numToCheck == -1 && myInput != "-1") {
-				cout << "Input is invalid.\n";
-				inputonevalid = false;
-			} else {
-				cout << "Input is valid. Continuing.\n";
-				numbers[0] = numToCheck;
-				inputonevalid = true;
-    		}
-		} while (inputonevalid == false);
-		
-		//get the second number (and check to make sure it's valid) unless the function only needed one number
-		if (mathfunction == "square" || mathfunction == "sqrt" || mathfunction == "factorial" || mathfunction == "!" || mathfunction == "cube" || mathfunction == "cbrt" || mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom" || mathfunction == "sin" || mathfunction == "sine" || mathfunction == "cos" || mathfunction == "cosine" || mathfunction == "tan" || mathfunction == "tangent") {
-			//do nothing here
-		} else {
-			do {
-				//tell user to type second number
-				cout << "Type a second number. \n";
-	    	    string myInput;
-    		    cin >> myInput;
-    		    //check if user quit
-    		    if (myInput == "quit" || myInput == "panic" || myInput == "exit") {
-	    		    cout << "Calculator terminated\n";
-	    		    return 1;
-    		    if (myInput == "quit" || myInput == "panic") {
-	    		    cout << "Calculator terminated\n";
-	    		    return 0;
-    		    }
-    		    double numToCheck = convertToInt(myInput);
-    		    if(numToCheck == -1 && myInput != "-1")
-    		    {
-    		        cout << "Input is invalid.\n";
-    	    	    inputtwovalid = false;
-				} else {
-					cout << "Input is valid. Continuing.\n";
-   	         		numbers[1] = numToCheck;
-					inputtwovalid = true;
-				}
-   	 		} while (inputtwovalid == false);
+		//if the math function is a common logarithm, set up some stuff for the logarithm algorithm
+		if (mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom") {
+			numbers[1] = 10;
+			mathfunction = "log";
 		}
+		
+		GetFirstNumber();
+
+		GetSecondNumber();
 		
 		//if the math function is a square or a cube, set up some stuff for the exponent algorithm
 		if (mathfunction == "square") {
@@ -385,12 +507,6 @@ int main()
 			numbers[1] = 3;
 			mathfunction = "root";
 		}
-		//if the math function is a common logarithm, set up some stuff for the logarithm algorithm
-		if (mathfunction == "log10" || mathfunction == "logarithm10" || mathfunction == "10logarithm" || mathfunction == "10log" || mathfunction == "commonlogarithm" || mathfunction == "comlogarithm" || mathfunction == "commonlog" || mathfunction == "logcommon" || mathfunction == "logarithmcommon" || mathfunction == "logcom" || mathfunction == "logarithmcom") {
-			numbers[1] = 10;
-			mathfunction = "log";
-		}
-		
 		
 		//calculations
 		cout << "Calculating... ";
@@ -400,13 +516,13 @@ int main()
 			cout << "Done.\n";
 		} else {
 			string FailOutput;
-			if (FailReason == 0) {
+			if (FailReason == 0 && Failed == true) {
 				FailOutput = "user attempted to divide by zero";
 			}
-			if (FailReason == 1) {
+			if (FailReason == 1 && Failed == true) {
 				FailOutput = "complex numbers using i are not supported";
 			}
-			if (FailReason == 2) {
+			if (FailReason == 2 && Failed == true) {
 				FailOutput = "number to factorial is too big";
 			}
 			cout << "Failed.\nInvalid operation: " << FailOutput << ", exiting...\n";
@@ -424,14 +540,6 @@ int main()
 		if (ccalcagain == 'y') {calcagain = true;} else {calcagain = false;}
 		
 	} while (calcagain == true);
-	
-	//new line and instructions to close
-	cout << "\nThank you for using this program. To close, type anything and hit enter. \n";
-	
-	
-	//wait for the user to input something
-	string endinput;
-	cin >> endinput;
 	
 	cout << "Calculator terminated\n";
 	

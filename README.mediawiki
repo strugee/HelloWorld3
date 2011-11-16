@@ -1,4 +1,4 @@
-== Calculator app ==
+== Calculator app (beta) ==
 
 === Naming ===
 We need a (good) name for the program! If you have any ideas, open an issue.
@@ -21,12 +21,13 @@ As of 9/26/11, the application supports the following features:
 ## Factorials
 # General features
 ## Says hi
+## Tells you what language it's written in
 ## Intelligent
 ## Marked as stable on 10/26/11 (woo!)
 ## At any prompt, type quit or panic to exit, no questions asked.
 ### Won't let you divide by 0
 ### Won't let you root a number that would return a value with ''i'' (since this does Bad Things to the program)
-### Won't let you factorial a number too high (since that would give an incorrect answer)
+### Won't let you factorial a number too high (since that would give an incorrect answer due to technical reasons)
 ### Recognizes squares, cubes, square roots, cube roots, and common logarithms even if you use the regular exponent, root, multiplication, or logarithm functions
 ## Once done, calculator will ask if you want to use again
 

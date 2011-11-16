@@ -2,8 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="HelloWorld3/HelloWorld.cpp">
     <Files>
-      <File FileName="HelloWorld3/HelloWorld.cpp" Line="412" Column="2" />
-      <File FileName="README.mediawiki" Line="36" Column="53" />
+      <File FileName="HelloWorld3/HelloWorld.cpp" Line="161" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
