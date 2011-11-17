@@ -48,9 +48,9 @@ You're welcome to develop this program at https://github.com/strugee/HelloWorld3
 ==== Fail Values ====
 This is a chart for the FailReason variable, which the calculate() method will set when it fails, along with returning 1. Trust me, you'll need it.
 {| border="1"
-|0||Divided by 0
+|0.||Divided by 0
 |-
-|1||Answer would have been complex (with ''i'', as opposed to real, without ''i'')
+|1.||Answer would have been complex (with ''i'', as opposed to real, without ''i'')
 |-
-|2||Factorial is too big
+|2.||Factorial is too big
 |}
