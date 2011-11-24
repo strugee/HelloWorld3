@@ -8,6 +8,7 @@ Todos have been moved to the readme!
  */
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <cstdlib>
 #include <stdio.h>
@@ -480,6 +481,20 @@ int main()
 	 */
 	
 	do {
+		
+		//check for updates
+		/* string version;
+		string localversion;
+		ifstream updatefile;
+		updatefile.open("https://raw.github.com/strugee/HelloWorld3/master/HelloWorld3/version.txt");
+		updatefile >> version;
+		updatefile.close();
+		localversion = "0.7b1";
+		if (localversion == version) {
+			cout << "You have an up-to-date version of this program. Congrats!\n";
+		} else {
+			cout << "You have an out-of-date version of this program. The current version is " << version << ", while you have " << localversion << ".\n Unfortunately, there is not a centralized download site at this point. We're working on it!\n";
+		} */
 		
 		GetMathFunction();
 

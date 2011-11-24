@@ -44,6 +44,7 @@ You're welcome to develop this program at https://github.com/strugee/HelloWorld3
 ## Make everything recognize e (especially log, for ln = natural log = log base e)
 # Implement trig functions
 # Make requests for numbers contextual
+# Make it so the user can go back to previous prompt
 
 ==== Fail Values ====
 This is a chart for the FailReason variable, which the calculate() method will set when it fails, along with returning 1. Trust me, you'll need it.
