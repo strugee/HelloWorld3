@@ -324,7 +324,7 @@ int calculate()
 			/*cout << "Done.\n";
 			cout << "Your first number, " << numbers[0] << ", divided by your second number, 0 , is negative infinity and positive infinity.";
 			cout << "\nThank you for using this program. To close, hit any key. \n";
-			system("pause");
+			system("pause"); //if this is uncommented, remember to find a way to remove this system("pause") function!
 			return 0; */
 			FailReason = 0;
 			Failed = true;
@@ -371,17 +371,22 @@ int calculate()
 			numbers[2] = sqrt(numbers[0]);
 			mfword = "square root";
 			return 0;
-		// If user *did* attempt to root a negative number, fail and exit
+		// If user *did* attempt to root a negative number, set it up so the root function will fail
 		} else {
-			FailReason = 1;
-			Failed = true;
-			return 1;
+			mathfunction == "root";
 		}
 	}
 	
 	// Roots
 	if (mathfunction == "root") {
 		root = true;
+		// Check to see if the number will return i
+		if (numbers[0] < 0) {
+			// Number is negative. Therefore, it will return a complex number.
+			FailReason = 1;
+			Failed = true;
+			return 1;
+		}
 		// Calculations
 		numbers[2] = pow(numbers[0], (1.0/numbers[1]));
 		// Stuff for the output
