@@ -1,5 +1,5 @@
 //HelloWorld program
-//Written by Alex Jordan
+//Written by Alex Jordan with help from Jackson de Campos and others at iD
 //v0.7a1
 
 /*
