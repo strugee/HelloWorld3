@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HelloWorld3/HelloWorld.cpp">
+  <MonoDevelop.Ide.Workbench ActiveDocument="README.mediawiki">
     <Files>
       <File FileName="HelloWorld3/HelloWorld.cpp" Line="6" Column="7" />
+      <File FileName="README.mediawiki" Line="37" Column="31" />
       <File FileName="HelloWorld3/version.txt" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

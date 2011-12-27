@@ -34,7 +34,7 @@ As of 9/26/11, the application supports the following features:
 === Known Issues ===
 For hardcore known issues, visit https://github.com/strugee/HelloWorld3/issues.
 A general list follows, but this may not be up-to-date or current (it will probably be missing items instead of having fixed ones)
-# Even though the square root function checks for ''i'', the regular root function doesn't.
+# Whoa, no issues at this time
 
 === Development ===
 You're welcome to develop this program at https://github.com/strugee/HelloWorld3 - just hit fork.
