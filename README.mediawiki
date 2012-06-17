@@ -3,6 +3,8 @@
 === Naming ===
 We need a (good) name for the program! If you have any ideas, open an issue.
 
+On 6/17/12, @jacksondc suggested "Calcy". This is being tracked as Issue #27.
+
 === Features ===
 As of 9/26/11, the application supports the following features:
 # Math features
@@ -33,7 +35,7 @@ As of 9/26/11, the application supports the following features:
 
 === Known Issues ===
 For hardcore known issues, visit https://github.com/strugee/HelloWorld3/issues.
-A general list follows, but this may not be up-to-date or current (it will probably be missing items instead of having fixed ones)
+A general list follows, but this may not be up-to-date or current
 # Whoa, no issues at this time
 
 === Development ===
